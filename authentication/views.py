@@ -36,7 +36,7 @@ def login_view(request):
 #function de deconnexion 
 def logout_view(request):
     logout(request)
-    return redirect('authenticate:login')
+    return redirect('authentication:login')
             
 
 
