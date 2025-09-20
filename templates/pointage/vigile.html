@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>PointageVgl</h2>
+<form method="post">
+  {% csrf_token %}
+  <table class="table table-bordered table-striped mt-4 ">
+    <thead class=""><tr><th>Employé</th><th>Matricule</th><th>Actions</th></tr></thead>
+    <tbody class="">
+      {% for emp in employes %}
+      <tr class="">
+        <td class="">{{ emp.name }}</td>
+        <td>{{ emp.matricule }}</td>
+        <td>
+
+          <input type="hidden" name="employe_id" value="{{ emp.id }}">
+          <button name="action"   value="IN" type="submit" class="me-2">
+            entre
+          </button>
+          
+          <button name="action" value="OUT"  type="submit" class="me-2 ">
+            Sortie
+          </button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</form>
+{%endblock%}

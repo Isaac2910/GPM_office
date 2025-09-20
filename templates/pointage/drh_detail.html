@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 >Tableau de bord DRH</h2>
+<div style="display:flex; gap:20px;">
+  <div style="min-width:250px;" class="me-4 ">
+    <h3>Employés</h3>
+    <ul class="list-group mb-4 ">
+      {% for emp in employes %}
+      <li><a class="md-4 bg-red" href="?employe={{ emp.id }}">{{ emp.name }} + {{ emp.matricule }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div style="flex:1;">
+    {% if selected %}
+      <h3>Détails pour {{ selected.name }} {{ selected.poste }}</h3>
+      <table class="table table-bordered table-striped">
+        <thead class=""><tr><th>Action</th><th>Timestamp</th><th>Par</th></tr></thead>
+        <tbody>
+          {% for p in pointages %}
+          <tr>
+            <td>{{ p.get_action_display }}</td>
+            <td>{{ p.timestamp }}</td>
+            <td>{{ p.recorded_by.username }}</td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="3">Aucun pointage pour cette période.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>Sélectionne un employé pour voir les détails.</p>
+    {% endif %}
+  </div>
+</div>
+{%endblock%}
