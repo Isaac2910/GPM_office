@@ -7,5 +7,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', lambda r: redirect('authentication:login')),
     path('auth/', include('authentication.urls', namespace='auth')),
-    #path('ptg', include('pointage.urls'))
+    path('ptg', include('pointage.urls', namespace='pointage' ))
 ]
