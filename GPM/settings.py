@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-0g5t1)f#vz(al6-2u6^bs^d+$ms=oi43t05@h*8vex)-w2lg-r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -45,10 +45,17 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+     
+    'whitenoise.middleware.WhiteNoiseMiddleware', # Pour servir les fichiers statiques en production
+
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+
+
+    
 ]
 
 ROOT_URLCONF = 'GPM.urls'
